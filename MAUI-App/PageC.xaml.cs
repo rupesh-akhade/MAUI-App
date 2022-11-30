@@ -9,6 +9,7 @@ public partial class PageC : ContentPage
 	public PageC(PageCViewModel viewModel)
 	{
 		InitializeComponent();
-		this.BindingContext = viewModel;
+		this.viewModel = viewModel;
+		this.BindingContext = this.viewModel;
 	}
 }

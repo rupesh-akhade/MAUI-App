@@ -36,20 +36,33 @@ namespace MAUI_App.ViewModels
 		}
 		private void GetSelectedMealItems()
 		{
-			IsRunning = true;
-			string SelectedItemsStr = Preferences.Get("SelectedMealItems", "");
-			if (!string.IsNullOrWhiteSpace(SelectedItemsStr))
+			Task.Run(async () =>
 			{
-				selectedMealItems = JsonConvert.DeserializeObject<ObservableCollection<MealItem>>(SelectedItemsStr);
-			}
-			IsRunning = false;
+
+				IsRunning = true;
+				string SelectedItemsStr = Preferences.Get("SelectedMealItems", "");
+				if (!string.IsNullOrWhiteSpace(SelectedItemsStr))
+				{
+					var mealItemList = JsonConvert.DeserializeObject<ObservableCollection<MealItem>>(SelectedItemsStr);
+					App.Current.Dispatcher.Dispatch(() =>
+					{
+						IsRunning = false;
+						if (mealItemList?.Count > 0)
+						{
+							foreach (var mealItem in mealItemList)
+							{
+								selectedMealItems.Add(mealItem);
+							}
+						}
+					});
+				}
+			});
 		}
 
 		[ICommand]
 		async Task GoBack()
 		{
 			await Shell.Current.GoToAsync("..");
-			//await Shell.Current.GoToAsync($"Meal/{nameof(PageB)}");
 			//await Shell.Current.GoToAsync($"{nameof(PageB)}");
 		}
 
