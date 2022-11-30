@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MAUI_App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MAUI_App"
+    Shell.TabBarIsVisible="True">
+
+	<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+	<!--<ShellContent
+        Title="PageA"
+        ContentTemplate="{DataTemplate local:PageA}"
+		FlyoutItemIsVisible="False"
+        Route="PageA" />
+
+	<ShellContent
+        Title="PageB"
+        ContentTemplate="{DataTemplate local:PageB}"
+		FlyoutItemIsVisible="False"
+        Route="PageB" />
+
+	<ShellContent
+        Title="PageC"
+        ContentTemplate="{DataTemplate local:PageC}"
+        Route="PageC" />-->
+
+</Shell>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView" 
+             x:Class="MAUI_App.PageB"
+             Title="PageB">
+	
+    <VerticalStackLayout>
+		<Label 
+            Text=""
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+		
+		<Button  x:Name="btnNext" Text="Next" BackgroundColor="#0792ef" WidthRequest="120" CornerRadius="10"   Clicked="btnNext_Clicked" />
+        
+		
+
+		<dxcv:DXCollectionView x:Name="MealItemListView"
+							   ItemsSource="{Binding mealItems}" 
+							   SelectionMode="Multiple" 
+							   DisplayMember="MealItemName"
+							   SelectedItems="{Binding selectedMealItems}">
+
+			<dxcv:DXCollectionView.Margin>
+				<OnIdiom x:TypeArguments="Thickness" Phone="16,0,0,0" Tablet="71,0,0,0"/>
+			</dxcv:DXCollectionView.Margin>
+		</dxcv:DXCollectionView>
+
+		
+	</VerticalStackLayout>
+
+</ContentPage>
